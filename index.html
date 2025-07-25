@@ -5,7 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ahmad Rifki Aryanto | Portfolio</title>
   <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/responsive.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- Right sidebar / navbar -->
@@ -113,4 +117,46 @@
       <span>+62 878-8272-5845</span>
     </a>
   </div>
+
+  <!-- Contact Form -->
+  <form class="contact-form" id="contactForm">
+    <h3 style="color: var(--am-green); margin-bottom: 1.5rem;">Send Me a Message</h3>
+    
+    <div class="form-group">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="subject">Subject</label>
+      <input type="text" id="subject" name="subject" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Tell me about your project or just say hello!" required></textarea>
+    </div>
+    
+    <button type="submit" class="submit-btn">
+      <i class="fas fa-paper-plane" style="margin-right: 0.5rem;"></i>
+      Send Message
+    </button>
+  </form>
 </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Ahmad Rifki Aryanto. Built with passion and dedication.</p>
+  </footer>
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>
