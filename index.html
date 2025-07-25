@@ -1,107 +1,127 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Ahmad Rifki Arya</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>Ahmad Rifki Aryanto - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Ahmad Rifki Arya</h1>
-            <p>Junior Front-End Developer</p>
+    <div class="sidebar">
+        <div class="profile-info">
+            <img src="https://via.placeholder.com/100" alt="Ahmad Rifki Aryanto" class="profile-pic">
+            <h2>Ahmad Rifki Aryanto</h2>
+            <p>Dynamic Professional | Aspiring Developer</p>
         </div>
-    </header>
-
-    <nav>
-        <div class="container">
+        <nav>
             <ul>
-                <li><a href="#about">Tentang Saya</a></li>
-                <li><a href="#skills">Keahlian</a></li>
-                <li><a href="#experience">Pengalaman</a></li>
-                <li><a href="#education">Pendidikan</a></li>
-                <li><a href="#portfolio">Portofolio</a></li>
-                <li><a href="#contact">Kontak</a></li>
+                <li><a href="#home" class="nav-link active" data-target="home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#about" class="nav-link" data-target="about"><i class="fas fa-user"></i> About</a></li>
+                <li><a href="#experience" class="nav-link" data-target="experience"><i class="fas fa-briefcase"></i> Experience</a></li>
+                <li><a href="#education" class="nav-link" data-target="education"><i class="fas fa-graduation-cap"></i> Education</a></li>
+                <li><a href="#skills" class="nav-link" data-target="skills"><i class="fas fa-cogs"></i> Skills & Certifications</a></li>
+                <li><a href="#contact" class="nav-link" data-target="contact"><i class="fas fa-envelope"></i> Contact</a></li>
             </ul>
-        </div>
-    </nav>
+        </nav>
+    </div>
 
-    <main>
-        <section id="about" class="container">
-            <h2>Tentang Saya</h2>
-            <p>Sebagai seorang <strong>Junior Front-End Developer</strong> yang penuh semangat, saya Ahmad Rifki Arya, berfokus pada pembangunan antarmuka pengguna yang **bersih, responsif, dan intuitif**. Saya memiliki ketertarikan mendalam pada detail desain dan pengalaman pengguna yang mulus. Berkomitmen untuk terus belajar dan beradaptasi dengan teknologi terbaru, saya mencari kesempatan untuk berkontribusi dalam tim yang dinamis dan inovatif.</p>
+    <div class="main-content">
+        <section id="home" class="content-section active">
+            <h1>Welcome to My Portfolio</h1>
+            <p>A dynamic professional with 5 years of combined experience in leadership, retail, and customer service. Proven ability to lead teams, manage operational risks, and build positive customer relationships. Supported by administrative expertise in Microsoft Office and a passion for continuous learning, as evidenced by active student status at Universitas Terbuka.</p>
+            <p>While my professional background is diverse, I am actively transitioning and expanding my skills into the world of programming. This portfolio showcases my journey and commitment to becoming a proficient developer.</p>
         </section>
 
-        <section id="skills" class="container">
-            <h2>Keahlian</h2>
-            <div class="skills-grid">
-                <div class="skill-item">HTML & CSS</div>
-                <div class="skill-item">JavaScript (ES6+)</div>
-                <div class="skill-item">Responsive Design</div>
-                <div class="skill-item">Git & GitHub</div>
-                <div class="skill-item">VS Code</div>
-                <div class="skill-item">UI/UX Basics</div>
-                </div>
+        <section id="about" class="content-section">
+            <h2>About Me</h2>
+            <p>My journey has equipped me with a unique blend of operational acumen, leadership qualities, and a customer-centric approach. With a solid foundation in managing daily operations, ensuring customer satisfaction, and optimizing team performance, I am now channeling this dedication and problem-solving mindset into the realm of software development.</p>
+            <p>I am a highly motivated individual, passionate about continuous learning and adapting to new challenges. My goal is to leverage my diverse experience and emerging programming skills to contribute to innovative projects and create impactful solutions.</p>
         </section>
 
-        <section id="experience" class="container">
-            <h2>Pengalaman</h2>
-            <div class="job-entry">
-                <h3>[Nama Posisi/Proyek Relevan]</h3>
-                <p><strong>[Nama Perusahaan/Institusi/Organisasi]</strong> | [Bulan Tahun Mulai] - [Bulan Tahun Selesai]</p>
+        <section id="experience" class="content-section">
+            <h2>Work Experience</h2>
+            <div class="experience-item">
+                <h3>Store Crew, PT. Indomarco Prismatama</h3>
+                <p>Jan 2025 - Present</p>
                 <ul>
-                    <li>Mengimplementasikan antarmuka pengguna responsif untuk situs web [nama proyek] menggunakan **HTML5 dan CSS3**.</li>
-                    <li>Berkolaborasi dengan tim desain untuk menerjemahkan wireframe dan mockup menjadi kode yang fungsional.</li>
-                    <li>Membantu dalam proses debugging dan optimasi performa halaman web.</li>
+                    <li>Managed daily store operations including cashiering, transactions, product display, and stock opname.</li>
+                    <li>Provided excellent customer service to ensure satisfaction and a positive shopping experience.</li>
                 </ul>
             </div>
-            </section>
-
-        <section id="education" class="container">
-            <h2>Pendidikan</h2>
-            <div class="education-entry">
-                <h3>[Nama Gelar/Jurusan Anda]</h3>
-                <p><strong>[Nama Universitas/Institusi Pendidikan]</strong> | [Tahun Mulai] - [Tahun Lulus]</p>
+            <div class="experience-item">
+                <h3>Staff Kitchen, Blenger Chinese Food</h3>
+                <p>April 2023 - April 2024</p>
                 <ul>
-                    <li>Mempelajari dasar-dasar pengembangan web, struktur data, dan algoritma.</li>
-                    <li>Proyek akhir: [Sebutkan proyek atau pencapaian akademis relevan].</li>
+                    <li>Supported the smooth flow of all kitchen operations, from initial preparation (mise en place) to ready-to-serve dishes.</li>
+                    <li>Responsible for maintaining cleanliness and sanitation of the workstation and ensuring consistent quality and taste of all served dishes.</li>
                 </ul>
             </div>
+            <div class="experience-item">
+                <h3>Store Leader, CV. EKA JAYA, Pangkalanbun</h3>
+                <p>Mar 2020 - Jan 2023</p>
+                <ul>
+                    <li>Fully responsible for store operations, including inventory, finances, ordering, and developing local marketing strategies.</li>
+                    <li>Fostered strong relationships with suppliers and customers.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="education" class="content-section">
+            <h2>Education</h2>
+            <div class="education-item">
+                <h3>Bachelor of Law (S1 Ilmu Hukum)</h3>
+                <p>Universitas Terbuka</p>
+                <p>Apr 2024 - Present</p>
+            </div>
+            <div class="education-item">
+                <h3>High School / Equivalent (SLTA / Sederajat)</h3>
+                <p>PKBM Putra Banasa</p>
+                <p>Feb 2022 - Feb 2024</p>
+            </div>
+        </section>
+
+        <section id="skills" class="content-section">
+            <h2>Skills & Certifications</h2>
+            <div class="skills-category">
+                <h3>Professional Skills</h3>
+                <ul>
+                    <li>Leadership</li>
+                    <li>Risk Management</li>
+                    <li>Customer Relationship Management</li>
+                    <li>Operational Management</li>
+                    <li>Inventory Management</li>
+                    <li>Financial Management</li>
+                    <li>Microsoft Office (Word, Excel, PowerPoint)</li>
+                </ul>
+            </div>
+            <div class="skills-category">
+                <h3>Certifications & Training</h3>
+                <ul>
+                    <li>Skill For Jobs (2024) - Microsoft & Coordinating Ministry for Economic Affairs of the Republic of Indonesia</li>
+                </ul>
+            </div>
+            <div class="skills-category">
+                <h3>Aspiring Programming Skills (Currently Learning)</h3>
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                    <li>(Add other programming languages/frameworks you are learning, e.g., Python, React)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="contact" class="content-section">
+            <h2>Contact Me</h2>
+            <p>I am open to new opportunities and collaborations. Feel free to reach out!</p>
+            <p><i class="fas fa-map-marker-alt"></i> Sampangan, Semarang Barat</p>
+            <p><i class="fas fa-phone"></i> 0878-8272-5845</p>
+            <p><i class="fas fa-envelope"></i> adryanrifky716@gmail.com</p>
+            <p><i class="fas fa-calendar-alt"></i> Semarang, 20 July 2025</p>
             </section>
+    </div>
 
-        <section id="portfolio" class="container">
-            <h2>Portofolio</h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <h3>Proyek Web Interaktif</h3>
-                    <p>Membangun situs web interaktif menggunakan HTML, CSS, dan JavaScript murni. Menampilkan galeri gambar dengan efek transisi.</p>
-                    <a href="#" target="_blank">Lihat Proyek</a> <a href="#" target="_blank">Kode Sumber</a>
-                </div>
-                <div class="portfolio-item">
-                    <h3>Desain Landing Page Responsif</h3>
-                    <p>Merancang dan mengimplementasikan landing page yang sepenuhnya responsif untuk desktop dan mobile.</p>
-                    <a href="#" target="_blank">Lihat Proyek</a> <a href="#" target="_blank">Kode Sumber</a>
-                </div>
-                </div>
-        </section>
-
-        <section id="contact" class="container">
-            <h2>Kontak</h2>
-            <p>Siap untuk berkolaborasi dan membawa ide-ide Anda menjadi kenyataan web yang indah.</p>
-            <p>Email: <a href="mailto:ahmad.rifki.arya@example.com">ahmad.rifki.arya@example.com</a></p>
-            <p>LinkedIn: <a href="https://linkedin.com/in/ahmad-rifki-arya" target="_blank">linkedin.com/in/ahmad-rifki-arya</a></p>
-            <p>GitHub: <a href="https://github.com/ahmad-rifki-arya" target="_blank">github.com/ahmad-rifki-arya</a></p>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Ahmad Rifki Arya. Hak Cipta Dilindungi Undang-Undang.</p>
-        </div>
-    </footer>
-
-    <script src="js/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
