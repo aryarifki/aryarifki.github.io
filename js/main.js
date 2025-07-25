@@ -1,18 +1,49 @@
-// Loading Screen
+// Loading Screen - Optimized duration
 window.addEventListener('load', () => {
     const loadingScreen = document.querySelector('.loading-screen');
+    // Reduced from 2000ms to 1000ms for better UX
     setTimeout(() => {
         loadingScreen.classList.add('hidden');
-    }, 2000);
+    }, 1000);
 });
 
 // Navigation Toggle
 const navToggle = document.getElementById('navToggle');
 const sideNav = document.getElementById('sideNav');
 
-navToggle.addEventListener('click', () => {
-    navToggle.classList.toggle('active');
+navToggle.addEventListener('click', toggleNav);
+
+function toggleNav() {
+    const isActive = navToggle.classList.toggle('active');
     sideNav.classList.toggle('active');
+    
+    // Update ARIA attribute for accessibility
+    navToggle.setAttribute('aria-expanded', isActive);
+    
+    // Focus management for accessibility
+    if (isActive) {
+        // Focus first nav link when opened
+        const firstNavLink = sideNav.querySelector('.nav-link');
+        if (firstNavLink) firstNavLink.focus();
+    }
+}
+
+// Keyboard navigation support
+navToggle.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleNav();
+    }
+});
+
+// Close nav with Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && sideNav.classList.contains('active')) {
+        navToggle.classList.remove('active');
+        sideNav.classList.remove('active');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.focus(); // Return focus to toggle button
+    }
 });
 
 // Close nav when clicking outside
@@ -20,6 +51,7 @@ document.addEventListener('click', (e) => {
     if (!sideNav.contains(e.target) && !navToggle.contains(e.target)) {
         sideNav.classList.remove('active');
         navToggle.classList.remove('active');
+        navToggle.setAttribute('aria-expanded', 'false');
     }
 });
 
@@ -55,15 +87,21 @@ if (typeof AOS !== 'undefined') {
     });
 }
 
-// Form submission
+// Form submission with improved accessibility
 document.querySelector('.contact-form').addEventListener('submit', (e) => {
     e.preventDefault();
     
-    // Get form data
+    // Get form data using the correct field names
     const formData = new FormData(e.target);
-    const name = e.target.querySelector('input[type="text"]').value;
-    const email = e.target.querySelector('input[type="email"]').value;
-    const message = e.target.querySelector('textarea').value;
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const message = formData.get('message');
+    
+    // Basic validation
+    if (!name || !email || !message) {
+        alert('Please fill in all required fields.');
+        return;
+    }
     
     // Here you would normally send the data to a server
     console.log('Form submitted:', { name, email, message });
@@ -73,29 +111,23 @@ document.querySelector('.contact-form').addEventListener('submit', (e) => {
     
     // Reset form
     e.target.reset();
+    
+    // Return focus to the first form field for accessibility
+    const firstInput = e.target.querySelector('input[type="text"]');
+    if (firstInput) firstInput.focus();
 });
 
-// Update active nav link on scroll
+// Update active nav link on scroll with improved debouncing
 let lastScrollY = window.scrollY;
-let isScrollingDown = false;
 let ticking = false;
+let scrollTimeout;
 
 function updateNavOnScroll() {
     const currentScrollY = window.scrollY;
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-link');
     
-    // Determine scroll direction
-    if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scrolling down and past hero section
-        isScrollingDown = true;
-        sideNav.classList.add('scroll-visible');
-    } else if (currentScrollY < lastScrollY || currentScrollY <= 100) {
-        // Scrolling up or at top
-        isScrollingDown = false;
-        sideNav.classList.remove('scroll-visible');
-    }
-    
+    // Remove auto-show navbar functionality - navbar only shows when manually toggled
     lastScrollY = currentScrollY;
     
     // Update active nav link
@@ -127,4 +159,10 @@ function requestScrollUpdate() {
     }
 }
 
-window.addEventListener('scroll', requestScrollUpdate);
+// Debounced scroll event listener
+function debouncedScrollHandler() {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(requestScrollUpdate, 10);
+}
+
+window.addEventListener('scroll', debouncedScrollHandler, { passive: true });

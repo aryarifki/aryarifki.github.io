@@ -1,9 +1,10 @@
-/* /* Reset and Base Styles */
+/* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 :root {
     --aston-green: #004225;
     --neon-green: #39FF14;
@@ -11,7 +12,7 @@
     --black: #000000;
     --white: #ffffff;
 
-    /* ✅ Background utama: gradient hitam ke hijau Aston */
+    /* Background utama: gradient hitam ke hijau Aston */
     --gradient-primary: var(--aston-green);
     --gradient-dark: linear-gradient(135deg, var(--black), var(--aston-green));
     --shadow-light: 0 5px 15px rgba(0, 66, 37, 0.1);
@@ -25,6 +26,10 @@ body {
     color: var(--white);
     background: var(--gradient-dark);
     overflow-x: hidden;
+    /* Performance optimization */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
 h1, h2, h3 {
@@ -103,6 +108,10 @@ h1, h2, h3 {
     justify-content: center;
     align-items: center;
     transition: all 0.3s ease;
+    /* Performance optimization */
+    will-change: transform;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
 
 .nav-toggle span {
@@ -111,6 +120,10 @@ h1, h2, h3 {
     background: white;
     margin: 2px 0;
     transition: 0.3s;
+    /* Performance optimization */
+    will-change: transform, opacity;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
 
 .nav-toggle.active span:nth-child(1) {
@@ -134,15 +147,19 @@ h1, h2, h3 {
     height: 100vh;
     background: rgba(0, 66, 37, 0.95);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
     transition: right 0.3s ease;
     z-index: 1000;
     padding: 40px 0;
     display: flex;
     flex-direction: column;
+    /* Performance optimization */
+    will-change: transform;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
 
-.side-nav.active,
-.side-nav.scroll-visible {
+.side-nav.active {
     right: 0;
 }
 
@@ -200,8 +217,53 @@ h1, h2, h3 {
 }
 
 .nav-link:hover::after,
-.nav-link.active::after {
+.nav-link.active::after,
+.nav-link:focus::after {
     width: 100%;
+}
+
+/* Focus indicators for accessibility */
+.nav-link:focus,
+.nav-toggle:focus,
+.btn:focus,
+.contact-form input:focus,
+.contact-form textarea:focus,
+.social-links a:focus {
+    outline: 2px solid var(--neon-green);
+    outline-offset: 2px;
+}
+
+/* Remove outline for mouse users while keeping it for keyboard users */
+.nav-link:focus:not(:focus-visible),
+.nav-toggle:focus:not(:focus-visible),
+.btn:focus:not(:focus-visible),
+.social-links a:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Screen reader only styles */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
 
 .nav-footer {
@@ -340,12 +402,17 @@ h1, h2, h3 {
 .floating-card {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
     padding: 20px 30px;
     border-radius: 15px;
     display: flex;
     align-items: center;
     gap: 15px;
     animation: float-card 6s ease-in-out infinite;
+    /* Performance optimization */
+    will-change: transform;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
 
 .floating-card:nth-child(2) {
@@ -663,19 +730,4 @@ section {
 
 .contact-form button {
     align-self: flex-start;
-}
-/* 2. Hide mouse pointer */
-body {
-    cursor: none;
-}
-.cursor, .cursor-follower {
-    display: none; /* jika cursor custom ada */
-}
-
-/* 3. Header utama jadi putih */
-.hero-title {
-    color: #ffffff !important;
-    background: none !important;
-    -webkit-background-clip: unset !important;
-    -webkit-text-fill-color: unset !important;
 }
