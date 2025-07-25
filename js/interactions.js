@@ -1,74 +1,129 @@
-// Parallax Effect
-window.addEventListener('scroll', () => {
+// Parallax Effect with better performance and cross-browser support
+let parallaxTicking = false;
+
+function updateParallax() {
     const scrolled = window.pageYOffset;
     const parallaxElements = document.querySelectorAll('.parallax');
     
     parallaxElements.forEach(element => {
         const speed = element.dataset.speed || 0.5;
-        element.style.transform = `translateY(${scrolled * speed}px)`;
+        const transform = `translateY(${scrolled * speed}px)`;
+        
+        // Cross-browser transform
+        element.style.transform = transform;
+        element.style.webkitTransform = transform;
+        element.style.msTransform = transform;
     });
-});
-
-// Mouse follower
-const cursor = document.createElement('div');
-cursor.className = 'cursor';
-document.body.appendChild(cursor);
-
-const cursorFollower = document.createElement('div');
-cursorFollower.className = 'cursor-follower';
-document.body.appendChild(cursorFollower);
-
-document.addEventListener('mousemove', (e) => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
     
-    setTimeout(() => {
-        cursorFollower.style.left = e.clientX + 'px';
-        cursorFollower.style.top = e.clientY + 'px';
-    }, 100);
-});
+    parallaxTicking = false;
+}
 
-// Add cursor styles
+function requestParallaxUpdate() {
+    if (!parallaxTicking) {
+        requestAnimationFrame(updateParallax);
+        parallaxTicking = true;
+    }
+}
+
+window.addEventListener('scroll', requestParallaxUpdate, { passive: true });
+
+// Mouse follower - Only for devices with mouse support
+function initMouseFollower() {
+    // Check if device supports mouse (not touch-only device)
+    if (window.matchMedia('(hover: hover)').matches) {
+        const cursor = document.createElement('div');
+        cursor.className = 'cursor';
+        document.body.appendChild(cursor);
+
+        const cursorFollower = document.createElement('div');
+        cursorFollower.className = 'cursor-follower';
+        document.body.appendChild(cursorFollower);
+
+        let mouseX = 0, mouseY = 0;
+        let cursorX = 0, cursorY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            cursor.style.left = mouseX + 'px';
+            cursor.style.top = mouseY + 'px';
+        });
+
+        // Smooth animation for follower
+        function animateFollower() {
+            cursorX += (mouseX - cursorX) * 0.1;
+            cursorY += (mouseY - cursorY) * 0.1;
+            
+            cursorFollower.style.left = cursorX + 'px';
+            cursorFollower.style.top = cursorY + 'px';
+            
+            requestAnimationFrame(animateFollower);
+        }
+        animateFollower();
+
+        // Hover effects
+        document.querySelectorAll('a, button').forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                cursor.classList.add('active');
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                cursor.classList.remove('active');
+            });
+        });
+    }
+}
+
+// Initialize mouse follower only on appropriate devices
+initMouseFollower();
+
+// Add cursor styles with cross-browser support
 const style = document.createElement('style');
 style.textContent = `
-    .cursor {
-        width: 20px;
-        height: 20px;
-        border: 2px solid var(--neon-green);
-        border-radius: 50%;
-        position: fixed;
-        pointer-events: none;
-        z-index: 9999;
-        transition: transform 0.1s;
+    @media (hover: hover) {
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--neon-green);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s;
+            will-change: transform;
+        }
+        
+        .cursor-follower {
+            width: 40px;
+            height: 40px;
+            background: rgba(57, 255, 20, 0.1);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.3s;
+            will-change: transform;
+        }
+        
+        .cursor.active {
+            transform: scale(1.5);
+        }
+        
+        /* Hide default cursor for mouse devices */
+        body {
+            cursor: none;
+        }
     }
     
-    .cursor-follower {
-        width: 40px;
-        height: 40px;
-        background: rgba(57, 255, 20, 0.1);
-        border-radius: 50%;
-        position: fixed;
-        pointer-events: none;
-        z-index: 9998;
-        transition: transform 0.3s;
-    }
-    
-    .cursor.active {
-        transform: scale(1.5);
+    /* Show default cursor for touch devices */
+    @media (hover: none) {
+        body {
+            cursor: auto;
+        }
     }
 `;
 document.head.appendChild(style);
-
-// Hover effects
-document.querySelectorAll('a, button').forEach(element => {
-    element.addEventListener('mouseenter', () => {
-        cursor.classList.add('active');
-    });
-    
-    element.addEventListener('mouseleave', () => {
-        cursor.classList.remove('active');
-    });
-});
 
 // Particle effect
 function createParticles() {
