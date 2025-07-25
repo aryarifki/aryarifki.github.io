@@ -1,116 +1,276 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ahmad Rifki Aryanto | Portfolio</title>
-  <link rel="stylesheet" href="css/style.css"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmad Rifki Aryanto - Professional Portfolio</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/icons/favicon.png">
 </head>
 <body>
-  <!-- Right sidebar / navbar -->
-  <nav id="sidebar" class="sidebar">
-    <div class="brand">
-      <img id="avatar" src="https://api.dicebear.com/7.x/bottts-neutral/svg?seed=Rifki&backgroundColor=004225" alt="avatar"/>
-      <span>Rifki.</span>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader">
+            <div class="aston-logo">
+                <i class="fas fa-car-side"></i>
+            </div>
+        </div>
     </div>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#certifications">Certifications</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div id="themeToggle" class="theme-toggle">🌙</div>
-  </nav>
 
-  <!-- Hamburger for mobile -->
-  <button id="toggleBtn" class="toggle-btn">☰</button>
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Side Navigation -->
+        <nav id="side-nav" class="side-nav">
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+                <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+                <li><a href="#experience" class="nav-link" data-section="experience">Experience</a></li>
+                <li><a href="#education" class="nav-link" data-section="education">Education</a></li>
+                <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+            </ul>
+            <div class="nav-footer">
+                <p>&copy; 2025 Ahmad Rifki</p>
+            </div>
+        </nav>
 
-  <!-- Main content -->
-  <main class="main">
-    <header id="about">
-      <h1>Ahmad Rifki Aryanto</h1>
-      <p>Dynamic professional with 5 years leadership & retail experience, now crafting elegant digital solutions.</p>
-    </header>
-       <!--  EXPERIENCE SECTION  -->
-    <section id="experience">
-      <h2>Work Experience</h2>
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Hero Section -->
+            <section id="home" class="hero-section">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span>Ahmad Rifki</span>
+                        <span>Aryanto</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Dynamic Professional | Retail Leader | Customer Service Expert
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#experience" class="btn btn-primary">View My Journey</a>
+                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="floating-card">
+                        <i class="fas fa-trophy"></i>
+                        <span>5+ Years Experience</span>
+                    </div>
+                    <div class="floating-card">
+                        <i class="fas fa-users"></i>
+                        <span>Team Leadership</span>
+                    </div>
+                    <div class="floating-card">
+                        <i class="fas fa-handshake"></i>
+                        <span>Customer Relations</span>
+                    </div>
+                </div>
+            </section>
 
-      <!-- Card 1 -->
-      <div class="card">
-        <h3>Store Crew</h3>
-        <div class="meta">PT. Indomarco Prismatama &nbsp;|&nbsp; Jan 2025 – Present</div>
-        <ul>
-          <li>Manage daily store operations including cashier, transactions, product display and stock-opname.</li>
-          <li>Deliver excellent customer service to ensure satisfaction and a memorable shopping experience.</li>
-        </ul>
-      </div>
+            <!-- About Section -->
+            <section id="about" class="about-section">
+                <div class="section-header">
+                    <h2 class="section-title">About Me</h2>
+                    <div class="title-underline"></div>
+                </div>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p class="lead">
+                            A dynamic professional with 5 years of combined experience in leadership, retail, and customer service. 
+                            Proven ability to lead teams, manage operational risks, and build positive customer relationships.
+                        </p>
+                        <p>
+                            Backed by administrative expertise using Microsoft Office and a continuous learning spirit demonstrated 
+                            by my active student status at Universitas Terbuka.
+                        </p>
+                    </div>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <i class="fas fa-crown"></i>
+                            <h3>Leadership</h3>
+                            <p>Leading teams to success</p>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-store"></i>
+                            <h3>Retail Management</h3>
+                            <p>Store operations & inventory</p>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-user-friends"></i>
+                            <h3>Customer Service</h3>
+                            <p>Building lasting relationships</p>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-laptop"></i>
+                            <h3>Microsoft Office</h3>
+                            <p>Administrative expertise</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-      <!-- Card 2 -->
-      <div class="card">
-        <h3>Staff Kitchen</h3>
-        <div class="meta">Blenger Chinese Food &nbsp;|&nbsp; Apr 2023 – Apr 2024</div>
-        <ul>
-          <li>Support the smooth running of the entire kitchen operation, from initial preparation (mise-en-place) to ready-to-serve dishes.</li>
-          <li>Maintain cleanliness and sanitation of work stations and ensure every dish has consistent quality and taste.</li>
-        </ul>
-      </div>
+            <!-- Experience Section -->
+            <section id="experience" class="experience-section">
+    <div class="section-header">
+        <h2 class="section-title">Work Experience</h2>
+        <div class="title-underline"></div>
+    </div>
 
-      <!-- Card 3 -->
-      <div class="card">
-        <h3>Store Leader</h3>
-        <div class="meta">CV. EKA JAYA, Pangkalanbun &nbsp;|&nbsp; Mar 2020 – Jan 2023</div>
-        <ul>
-          <li>Fully responsible for overall store operations: inventory, finance, ordering, local marketing development.</li>
-          <li>Build strong relationships with suppliers and customers to drive sustainable growth.</li>
-        </ul>
-      </div>
-    </section>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+                <h3>Store Crew</h3>
+                <h4>PT. Indomarco Prismatama</h4>
+                <span class="timeline-date">January 2025 - Present</span>
+                <ul>
+                    <li>Manage daily store operations including cashier, transactions, display, and stock opname</li>
+                    <li>Provide excellent customer service to ensure satisfaction and experience</li>
+                </ul>
+            </div>
+        </div>
 
-    <section id="education">
-      <h2>Education</h2>
-      <div class="card">
-        <h3>Bachelor of Law (S1) — Universitas Terbuka (ongoing)</h3>
-      </div>
-    </section>
+        <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+                <h3>Staff Kitchen</h3>
+                <h4>Blenger Chinese Food</h4>
+                <span class="timeline-date">April 2023 - April 2024</span>
+                <ul>
+                    <li>Support all kitchen operations from initial preparation to final serving</li>
+                    <li>Maintain cleanliness and sanitation of work stations</li>
+                    <li>Ensure consistent quality and taste of all dishes served</li>
+                </ul>
+            </div>
+        </div>
 
-    <section id="certifications">
-      <h2>Certifications</h2>
-      <div class="card">
-        <h3>Skill For Jobs 2024 — Microsoft & Ministry of Economic Affairs, RI</h3>
-      </div>
-    </section>
-
-    <section id="projects">
-      <h2>Projects</h2>
-      <div class="project-grid">
-        <a class="project-card" href="projects/store-dashboard/index.html">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=60" alt="Store Dashboard"/>
-          <span>Store Inventory Dashboard</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- ----------  CONTACT SECTION  ---------- -->
-<section id="contact">
-  <h2>Contact Me</h2>
-
-  <div class="contact-wrapper">
-    <a class="contact-item" href="https://instagram.com/rifqiaarya" target="_blank" rel="noopener">
-      <i class="fab fa-instagram"></i>
-      <span>@rifqiaarya</span>
-    </a>
-
-    <a class="contact-item" href="mailto:adryanrifky716@gmail.com">
-      <i class="fas fa-envelope"></i>
-      <span>adryanrifky716@gmail.com</span>
-    </a>
-
-    <a class="contact-item" href="https://wa.me/6287882725845" target="_blank" rel="noopener">
-      <i class="fab fa-whatsapp"></i>
-      <span>+62 878-8272-5845</span>
-    </a>
-  </div>
+        <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+                <h3>Store Leader</h3>
+                <h4>CV. EKA JAYA, Pangkalanbun</h4>
+                <span class="timeline-date">March 2020 - January 2023</span>
+                <ul>
+                    <li>Full responsibility for store operations including inventory, finance, ordering</li>
+                    <li>Develop local marketing and maintain good relationships with suppliers and customers</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </section>
+
+            <!-- Education Section -->
+            <section id="education" class="education-section">
+                <div class="section-header">
+                    <h2 class="section-title">Education & Certifications</h2>
+                    <div class="title-underline"></div>
+                </div>
+                <div class="education-grid">
+                    <div class="education-card">
+                        <div class="card-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Undergraduate S1 Ilmu Hukum</h3>
+                        <p>Universitas Terbuka</p>
+                        <span class="status">Currently Active</span>
+                    </div>
+                    
+                    <div class="education-card">
+                        <div class="card-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>Computer Network Engineering</h3>
+                        <p>SMK Temulus, Ngawi</p>
+                    </div>
+                </div>
+                
+                <div class="certifications">
+                    <h3>Certifications</h3>
+                    <div class="cert-grid">
+                        <div class="cert-item">
+                            <i class="fab fa-python"></i>
+                            <span>Python Programming (2021)</span>
+                        </div>
+                        <div class="cert-item">
+                            <i class="fab fa-microsoft"></i>
+                            <span>Skill For Jobs (2024)</span>
+                        </div>
+                        <div class="cert-item">
+                            <i class="fas fa-code"></i>
+                            <span>Junior Web Developer (2025)</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="contact-section">
+                <div class="section-header">
+                    <h2 class="section-title">Get In Touch</h2>
+                    <div class="title-underline"></div>
+                </div>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+6287882725845">+62 878-8272-5845</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:adryanrifky716@gmail.com">adryanrifky716@gmail.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Sampangan, Semarang Barat</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-instagram"></i>
+                            <a href="https://instagram.com/rifqiaarya" target="_blank">@rifqiaarya</a>
+                        </div>
+                    </div>
+                    
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" required>
+                            <label for="name">Your Name</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" required>
+                            <label for="email">Your Email</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <label for="message">Your Message</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/interactions.js"></script>
+</body>
+</html>
