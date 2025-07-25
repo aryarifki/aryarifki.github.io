@@ -1,286 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ahmad Rifki Aryanto | Portfolio</title>
-  <style>
-    /* -------------  ROOT & RESET ------------- */
-    :root{
-      --green:#004225;
-      --green-light:#006d3b;
-      --black:#121212;
-      --white:#f5f5f5;
-      --transition:.4s ease;
-    }
-    *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial,sans-serif;}
-    html{scroll-behavior:smooth;}
-    body{background:var(--white);color:var(--black);transition:var(--transition);}
-    body.dark{background:var(--black);color:var(--white);}
-    a{color:inherit;text-decoration:none;}
-    ul{list-style:none;}
-
-    /* -------------  SIDEBAR ------------- */
-    .sidebar{
-      position:fixed;
-      top:0;left:0;
-      height:100vh;
-      width:240px;
-      background:var(--green);
-      display:flex;
-      flex-direction:column;
-      padding:2rem 1.5rem;
-      transition:var(--transition);
-      z-index:1000;
-    }
-    .sidebar .logo{
-      font-size:1.4rem;
-      font-weight:700;
-      color:var(--white);
-      margin-bottom:2rem;
-      letter-spacing:.5px;
-    }
-    .sidebar ul li{
-      margin:.8rem 0;
-    }
-    .sidebar ul li a{
-      color:var(--white);
-      font-size:1rem;
-      letter-spacing:.5px;
-      transition:var(--transition);
-      display:block;
-      padding:.5rem 0;
-    }
-    .sidebar ul li a:hover{
-      transform:translateX(6px);
-      color:var(--green-light);
-    }
-    .sidebar .theme-toggle{
-      margin-top:auto;
-      cursor:pointer;
-      color:var(--white);
-      font-size:1.2rem;
-    }
-    .toggle-btn{
-      display:none;
-      position:fixed;
-      top:1.2rem;
-      left:1.2rem;
-      font-size:1.6rem;
-      background:var(--green);
-      color:var(--white);
-      border:none;
-      border-radius:4px;
-      padding:.4rem .6rem;
-      z-index:1100;
-      cursor:pointer;
-    }
-
-    /* -------------  MAIN ------------- */
-    .main{
-      margin-left:240px;
-      padding:3rem 4vw;
-      transition:var(--transition);
-      max-width:1200px;
-    }
-    header h1{
-      font-size:2.8rem;
-      font-weight:700;
-      color:var(--green);
-    }
-    header p{
-      margin-top:.5rem;
-      color:#555;
-    }
-    .dark header p{color:#aaa;}
-    section{margin:3.5rem 0;}
-    h2{
-      font-size:2rem;
-      margin-bottom:1rem;
-      position:relative;
-      display:inline-block;
-    }
-    h2::after{
-      content:'';
-      position:absolute;
-      left:0;bottom:-4px;
-      width:50px;height:3px;
-      background:var(--green);
-    }
-    .card{
-      background:#fff;
-      border:1px solid #ddd;
-      border-radius:8px;
-      padding:1.4rem 1.8rem;
-      margin-bottom:1.5rem;
-      box-shadow:0 2px 6px rgba(0,0,0,.05);
-      transition:var(--transition);
-    }
-    .dark .card{background:#1e1e1e;border-color:#333;}
-    .card:hover{transform:translateY(-4px);box-shadow:0 8px 14px rgba(0,0,0,.15);}
-    .dark .card:hover{box-shadow:0 8px 14px rgba(0,255,130,.05);}
-    .card h3{color:var(--green);}
-    .card .meta{font-size:.9rem;color:#666;margin:.3rem 0 .7rem;}
-    .dark .card .meta{color:#aaa;}
-    .tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem;}
-    .tags span{
-      background:var(--green);
-      color:var(--white);
-      padding:.25rem .6rem;
-      border-radius:12px;
-      font-size:.75rem;
-      letter-spacing:.5px;
-    }
-    footer{
-      margin-top:4rem;
-      text-align:center;
-      font-size:.85rem;
-      color:#666;
-    }
-
-    /* -------------  RESPONSIVE ------------- */
-    @media(max-width:768px){
-      .sidebar{transform:translateX(-100%);}
-      .sidebar.open{transform:translateX(0);}
-      .main{margin-left:0;padding:2rem 4vw;}
-      .toggle-btn{display:block;}
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-  <!-- -------------  SIDEBAR ------------- -->
-  <nav class="sidebar" id="sidebar">
-    <div class="logo">Rifki<span style="color:#aaa;">.</span></div>
+  <!-- Right sidebar / navbar -->
+  <nav id="sidebar" class="sidebar">
+    <div class="brand">
+      <img id="avatar" src="https://api.dicebear.com/7.x/bottts-neutral/svg?seed=Rifki&backgroundColor=004225" alt="avatar"/>
+      <span>Rifki.</span>
+    </div>
     <ul>
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <div class="theme-toggle" id="themeToggle">🌙</div>
+    <div id="themeToggle" class="theme-toggle">🌙</div>
   </nav>
-  <button class="toggle-btn" id="toggleBtn">☰</button>
 
-  <!-- -------------  MAIN ------------- -->
+  <!-- Hamburger for mobile -->
+  <button id="toggleBtn" class="toggle-btn">☰</button>
+
+  <!-- Main content -->
   <main class="main">
     <header id="about">
       <h1>Ahmad Rifki Aryanto</h1>
-      <p>Dynamic professional with 5 years of combined leadership, retail and customer-service experience—now translating those skills into modern web and mobile solutions.</p>
+      <p>Dynamic professional with 5 years leadership & retail experience, now crafting elegant digital solutions.</p>
     </header>
 
-    <!-- Experience Section -->
     <section id="experience">
-      <h2>Programming-Focused Experience</h2>
-
-      <!-- Card 1 -->
+      <h2>Experience</h2>
       <div class="card">
         <h3>Store Crew & Inventory Dashboard Developer</h3>
-        <div class="meta">PT. Indomarco Prismatama | Jan 2025 – Present</div>
-        <p>
-          While running daily store operations I built an internal <strong>React & Firebase dashboard</strong> that tracks cashier transactions, shelf-display rotations and stock-opname counts in real time.  
-          The tool reduced out-of-stock incidents by <strong>32 %</strong> and cut end-of-day closing time from 38 min to 12 min.
-        </p>
-        <div class="tags">
-          <span>React</span><span>Firebase</span><span>Chart.js</span><span>Responsive CSS Grid</span>
-        </div>
+        <span class="meta">PT. Indomarco Prismatama | Jan 2025 – Present</span>
+        <p>Built a React + Firebase dashboard that cut stock-outs by 32 % and closing-time by 68 %.</p>
+        <div class="tags"><span>React</span><span>Firebase</span><span>Chart.js</span></div>
       </div>
-
-      <!-- Card 2 -->
       <div class="card">
-        <h3>Kitchen Automation & Ordering App</h3>
-        <div class="meta">Blenger Chinese Food | Apr 2023 – Apr 2024</div>
-        <p>
-          Designed and deployed a <strong>Flutter mobile app</strong> for the kitchen team:  
-          • Digital mise-en-place checklists synced across stations  
-          • QR-based order tickets → auto-color coding to reduce cooking errors  
-          • Daily hygiene & temperature logs stored on Google Sheets API  
-          Result: 27 % faster ticket-to-delivery time, 100 % paperless logs.
-        </p>
-        <div class="tags">
-          <span>Flutter</span><span>Dart</span><span>Google Sheets API</span><span>Provider State-Management</span>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="card">
-        <h3>Store Leader & Local Marketing CRM</h3>
-        <div class="meta">CV. EKA JAYA, Pangkalanbun | Mar 2020 – Jan 2023</div>
-        <p>
-          Led a team of 12 while building a lightweight <strong>Node.js & Express CRM</strong> that centralised supplier contacts, purchase orders and customer loyalty points.  
-          Integrated an SMS-gateway for automated “thank-you” messages, boosting repeat-purchase rate by 18 %.
-        </p>
-        <div class="tags">
-          <span>Node.js</span><span>Express</span><span>MongoDB</span><span>Twilio SMS API</span>
-        </div>
+        <h3>Kitchen Automation App</h3>
+        <span class="meta">Blenger Chinese Food | Apr 2023 – Apr 2024</span>
+        <p>Flutter-based order & hygiene app reducing ticket-to-delivery time by 27 %.</p>
+        <div class="tags"><span>Flutter</span><span>Dart</span><span>Google Sheets API</span></div>
       </div>
     </section>
 
-    <!-- Education -->
     <section id="education">
       <h2>Education</h2>
       <div class="card">
-        <h3>Bachelor of Law (S1)</h3>
-        <div class="meta">Universitas Terbuka — ongoing</div>
-        <p>Active evening student leveraging legal knowledge to ensure compliance in every software project.</p>
+        <h3>Bachelor of Law (S1) — Universitas Terbuka (ongoing)</h3>
       </div>
     </section>
 
-    <!-- Certifications -->
     <section id="certifications">
-      <h2>Certifications & Training</h2>
+      <h2>Certifications</h2>
       <div class="card">
-        <h3>Skill For Jobs — Microsoft & Ministry of Economic Affairs, RI</h3>
-        <div class="meta">2024 – Present</div>
-        <p>Completed tracks in JavaScript, Node.js and cloud deployment on Azure.</p>
+        <h3>Skill For Jobs 2024 — Microsoft & Ministry of Economic Affairs, RI</h3>
       </div>
     </section>
 
-    <!-- Contact -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="project-grid">
+        <a class="project-card" href="projects/store-dashboard/index.html">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=60" alt="Store Dashboard"/>
+          <span>Store Inventory Dashboard</span>
+        </a>
+      </div>
+    </section>
+
     <section id="contact">
-      <h2>Contact Me</h2>
+      <h2>Contact</h2>
       <div class="card">
-        <p><strong>Email:</strong> <a href="mailto:adryanrifky716@gmail.com">adryanrifky716@gmail.com</a></p>
-        <p><strong>Phone:</strong> <a href="tel:+6287882725845">+62 878-8272-5845</a></p>
-        <p><strong>Location:</strong> Sampangan, Semarang Barat, Indonesia</p>
+        <p>Email: <a href="mailto:adryanrifky716@gmail.com">adryanrifky716@gmail.com</a></p>
+        <p>Phone: <a href="tel:+6287882725845">+62 878-8272-5845</a></p>
       </div>
     </section>
 
-    <footer>
-      © 2025 Ahmad Rifki Aryanto — Crafted with passion & code.
-    </footer>
+    <footer>© 2025 Ahmad Rifki Aryanto</footer>
   </main>
 
-  <!-- -------------  JS ------------- -->
-  <script>
-    /* ---- Sidebar toggle for mobile ---- */
-    const sidebar = document.getElementById('sidebar');
-    const toggleBtn = document.getElementById('toggleBtn');
-    toggleBtn.addEventListener('click', () => sidebar.classList.toggle('open'));
-
-    /* ---- Dark / Light mode ---- */
-    const themeToggle = document.getElementById('themeToggle');
-    const body = document.body;
-    const saved = localStorage.getItem('theme');
-    if(saved === 'dark') enableDark();
-    themeToggle.addEventListener('click', () => {
-      body.classList.contains('dark') ? enableLight() : enableDark();
-    });
-    function enableDark(){
-      body.classList.add('dark');
-      themeToggle.textContent = '☀️';
-      localStorage.setItem('theme','dark');
-    }
-    function enableLight(){
-      body.classList.remove('dark');
-      themeToggle.textContent = '🌙';
-      localStorage.setItem('theme','light');
-    }
-
-    /* ---- Close sidebar when clicking a link (mobile) ---- */
-    document.querySelectorAll('.sidebar ul li a').forEach(link=>{
-      link.addEventListener('click', () => sidebar.classList.remove('open'));
-    });
-  </script>
+  <script src="js/script.js"></script>
 </body>
 </html>
