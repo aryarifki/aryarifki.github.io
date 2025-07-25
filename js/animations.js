@@ -1,96 +1,160 @@
-/* =========================================================
-   =                SCROLL & REVEAL  ANIMATIONS              =
-   ========================================================= */
+// Intersection Observer for scroll animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
+};
 
-// 1️⃣ Reveal on scroll
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => entry.isIntersecting && entry.target.classList.add('animated'));
-}, { threshold: 0.1 });
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animated');
+        }
+    });
+}, observerOptions);
 
-document.querySelectorAll('[data-aos]').forEach(el => observer.observe(el));
+// Observe all elements with animation classes
+document.querySelectorAll('[data-aos]').forEach(el => {
+    observer.observe(el);
+});
 
-// 2️⃣ Counter animation
-function animateCounter(el, start, end, dur = 2000) {
-    const inc = (end - start) / (dur / 16);
-    let cur = start;
+// Number counter animation
+function animateCounter(element, start, end, duration) {
+    const range = end - start;
+    const increment = range / (duration / 16);
+    let current = start;
+    
     const timer = setInterval(() => {
-        cur += inc;
-        if ((inc > 0 && cur >= end) || (inc < 0 && cur <= end)) {
-            el.textContent = end;
+        current += increment;
+        if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
+            element.textContent = end;
             clearInterval(timer);
         } else {
-            el.textContent = Math.floor(cur);
+            element.textContent = Math.floor(current);
         }
     }, 16);
 }
 
+// Animate stats on scroll
 document.querySelectorAll('.stat-card h3').forEach(stat => {
-    const final = parseInt(stat.textContent);
+    const finalValue = parseInt(stat.textContent);
     stat.textContent = '0';
-    new IntersectionObserver(entries => {
-        entries.forEach(e => e.isIntersecting && animateCounter(stat, 0, final));
-    }).observe(stat);
+    
+    const statObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target, 0, finalValue, 2000);
+                statObserver.unobserve(entry.target);
+            }
+        });
+    });
+    
+    statObserver.observe(stat);
 });
 
-// 3️⃣ Type-writer for hero subtitle
-function typeWriter(el, txt, spd = 50) {
-    el.textContent = '';
+// Typing animation for hero subtitle
+function typeWriter(element, text, speed = 100) {
     let i = 0;
-    const type = () => {
-        if (i < txt.length) {
-            el.textContent += txt.charAt(i++);
-            setTimeout(type, spd);
+    element.textContent = '';
+    
+    function type() {
+        if (i < text.length) {
+            element.textContent += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
         }
-    };
+    }
+    
     type();
 }
 
+// Apply typing animation
 window.addEventListener('load', () => {
-    const sub = document.querySelector('.hero-subtitle');
-    if (sub) typeWriter(sub, sub.textContent, 50);
+    const subtitle = document.querySelector('.hero-subtitle');
+    const originalText = subtitle.textContent;
+    typeWriter(subtitle, originalText, 50);
 });
 
-// 4️⃣ Skill tags stagger
-document.querySelectorAll('.skill-tag').forEach((tag, i) => {
-    tag.style.animationDelay = `${i * 0.1}s`;
+// Skill tag animation
+document.querySelectorAll('.skill-tag').forEach((tag, index) => {
+    tag.style.animationDelay = `${index * 0.1}s`;
+    tag.classList.add('fade-in');
 });
 
-// 5️⃣ Timeline items
-document.querySelectorAll('.timeline-item').forEach((item, i) => {
-    item.style.animationDelay = `${i * 0.2}s`;
+// Timeline animation
+document.querySelectorAll('.timeline-item').forEach((item, index) => {
+    item.style.animationDelay = `${index * 0.2}s`;
 });
 
-// 6️⃣ Certificate flip
+// Certificate card flip animation
 document.querySelectorAll('.cert-card').forEach(card => {
-    card.addEventListener('mouseenter', () => card.style.transform = 'rotateY(10deg) scale(1.05)');
-    card.addEventListener('mouseleave', () => card.style.transform = 'rotateY(0) scale(1)');
+    card.addEventListener('mouseenter', () => {
+        card.style.transform = 'rotateY(10deg) scale(1.05)';
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = 'rotateY(0) scale(1)';
+    });
 });
 
-// 7️⃣ Floating cards
-document.querySelectorAll('.floating-card').forEach((card, i) => {
-    card.style.animationDelay = `${i * 0.5}s`;
+// Floating animation for hero visual cards
+document.querySelectorAll('.floating-card').forEach((card, index) => {
+    card.style.animationDelay = `${index * 0.5}s`;
 });
 
-// 8️⃣ Form focus
+// Contact form input focus effects
 document.querySelectorAll('.contact-form input, .contact-form textarea').forEach(input => {
-    input.addEventListener('focus', () => input.parentElement.classList.add('focused'));
-    input.addEventListener('blur', () => !input.value && input.parentElement.classList.remove('focused'));
+    input.addEventListener('focus', () => {
+        input.parentElement.classList.add('focused');
+    });
+    
+    input.addEventListener('blur', () => {
+        if (!input.value) {
+            input.parentElement.classList.remove('focused');
+        }
+    });
 });
 
-// 9️⃣ Loading text pulse
-const loader = document.querySelector('.loader');
-if (loader) {
-    const txt = document.createElement('div');
-    txt.textContent = 'Loading...';
-    txt.style.cssText = `position:absolute;bottom:-40px;left:50%;transform:translateX(-50%);color:var(--neon-green);font-size:14px;animation:pulse 1.5s infinite`;
-    loader.appendChild(txt);
-}
+// Add focus styles
+const focusStyle = document.createElement('style');
+focusStyle.textContent = `
+    .contact-form .focused {
+        transform: scale(1.02);
+    }
+`;
+document.head.appendChild(focusStyle);
 
-// 🔟 Konami easter egg
-let konami = [];
-const secret = 'ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightKeyBKeyA';
-document.addEventListener('keydown', e => {
-    konami.push(e.code);
-    konami = konami.slice(-10);
-    if (konami.join('') === secret) document.body.style.animation = 'rainbow 2s infinite';
+// Preloader animation
+const loadingText = document.createElement('div');
+loadingText.textContent = 'Loading...';
+loadingText.style.cssText = `
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--neon-green);
+    font-size: 14px;
+    animation: pulse 1.5s infinite;
+`;
+document.querySelector('.loader').appendChild(loadingText);
+
+// Easter egg - Konami code
+let konamiCode = [];
+const secretCode = 'ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightKeyBKeyA';
+
+document.addEventListener('keydown', (e) => {
+    konamiCode.push(e.code);
+    konamiCode = konamiCode.slice(-10);
+    
+    if (konamiCode.join('') === secretCode) {
+        document.body.style.animation = 'rainbow 2s infinite';
+    }
 });
+
+const rainbowStyle = document.createElement('style');
+rainbowStyle.textContent = `
+    @keyframes rainbow {
+        0% { filter: hue-rotate(0deg); }
+        100% { filter: hue-rotate(360deg); }
+    }
+`;
+document.head.appendChild(rainbowStyle);
