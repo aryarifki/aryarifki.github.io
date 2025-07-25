@@ -1,0 +1,319 @@
+/* css/style.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap');
+
+:root {
+    --primary-color: #2c3e50; /* Dark Blue/Charcoal for modern feel */
+    --secondary-color: #3498db; /* A vibrant blue for accents */
+    --text-color: #333333;
+    --light-bg: #f8f9fa;
+    --dark-bg: #ecf0f1;
+    --border-color: #dddddd;
+    --header-font: 'Playfair Display', serif;
+    --body-font: 'Montserrat', sans-serif;
+}
+
+body {
+    font-family: var(--body-font);
+    margin: 0;
+    line-height: 1.7;
+    background-color: var(--light-bg);
+    color: var(--text-color);
+    scroll-behavior: smooth;
+}
+
+.container {
+    width: 90%;
+    max-width: 960px;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+header {
+    background: var(--primary-color);
+    color: #ffffff;
+    padding: 60px 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+header h1 {
+    margin: 0;
+    font-family: var(--header-font);
+    font-size: 3.5em;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+header p {
+    font-size: 1.3em;
+    font-weight: 300;
+    margin-top: 10px;
+}
+
+nav {
+    background: #ffffff;
+    color: var(--primary-color);
+    text-align: center;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+}
+
+nav ul li {
+    padding: 0 25px;
+    margin-bottom: 5px; /* Added for wrap scenario */
+}
+
+nav a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    padding-bottom: 5px;
+}
+
+nav a:hover {
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+main section {
+    padding: 40px 0;
+    margin-bottom: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+    font-family: var(--header-font);
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+    font-size: 2.5em;
+    font-weight: 700;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--secondary-color);
+    margin: 10px auto 0;
+    border-radius: 5px;
+}
+
+section p {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 20px auto;
+    font-size: 1.1em;
+}
+
+.job-entry, .education-entry {
+    margin-bottom: 25px;
+    padding: 20px;
+    border-left: 4px solid var(--secondary-color);
+    background-color: var(--dark-bg);
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.job-entry h3, .education-entry h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+.job-entry p, .education-entry p {
+    font-weight: 400;
+    color: #555;
+    margin-bottom: 10px;
+    text-align: left; /* Override section p */
+}
+
+.job-entry ul, .education-entry ul {
+    list-style: disc;
+    margin-left: 20px;
+    padding: 0;
+}
+
+.job-entry li, .education-entry li {
+    margin-bottom: 8px;
+    font-size: 1em;
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 0 20px;
+    margin-top: 20px;
+}
+
+.skill-item {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.95em;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.skill-item:hover {
+    transform: translateY(-3px);
+    background-color: #2980b9;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 0 20px;
+    margin-top: 20px;
+}
+
+.portfolio-item {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    background-color: var(--dark-bg);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.portfolio-item h3 {
+    color: var(--primary-color);
+    font-size: 1.5em;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.portfolio-item p {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 15px;
+    text-align: center; /* Ensure consistent alignment */
+}
+
+.portfolio-item a {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.portfolio-item a:hover {
+    background-color: var(--secondary-color);
+}
+
+#contact p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+#contact a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+#contact a:hover {
+    color: var(--primary-color);
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    background: var(--primary-color);
+    color: #ffffff;
+    margin-top: 40px;
+    font-size: 0.9em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.8em;
+    }
+
+    header p {
+        font-size: 1em;
+    }
+
+    nav ul li {
+        padding: 0 10px;
+    }
+
+    main section {
+        padding: 30px 0;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    .job-entry, .education-entry, .portfolio-item {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 95%;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        padding: 5px 0;
+    }
+
+    .skills-grid, .portfolio-grid {
+        gap: 10px;
+        padding: 0 10px;
+    }
+}
