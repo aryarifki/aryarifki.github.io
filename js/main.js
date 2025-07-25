@@ -47,11 +47,13 @@ document.querySelectorAll('.nav-link').forEach(link => {
 });
 
 // AOS Initialization
-AOS.init({
-    duration: 1000,
-    once: true,
-    offset: 100
-});
+if (typeof AOS !== 'undefined') {
+    AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100
+    });
+}
 
 // Form submission
 document.querySelector('.contact-form').addEventListener('submit', (e) => {
@@ -74,17 +76,36 @@ document.querySelector('.contact-form').addEventListener('submit', (e) => {
 });
 
 // Update active nav link on scroll
-window.addEventListener('scroll', () => {
+let lastScrollY = window.scrollY;
+let isScrollingDown = false;
+let ticking = false;
+
+function updateNavOnScroll() {
+    const currentScrollY = window.scrollY;
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-link');
     
+    // Determine scroll direction
+    if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down and past hero section
+        isScrollingDown = true;
+        sideNav.classList.add('scroll-visible');
+    } else if (currentScrollY < lastScrollY || currentScrollY <= 100) {
+        // Scrolling up or at top
+        isScrollingDown = false;
+        sideNav.classList.remove('scroll-visible');
+    }
+    
+    lastScrollY = currentScrollY;
+    
+    // Update active nav link
     let current = '';
     
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
         
-        if (scrollY >= sectionTop - 200) {
+        if (currentScrollY >= sectionTop - 200) {
             current = section.getAttribute('id');
         }
     });
@@ -95,4 +116,15 @@ window.addEventListener('scroll', () => {
             link.classList.add('active');
         }
     });
-});
+    
+    ticking = false;
+}
+
+function requestScrollUpdate() {
+    if (!ticking) {
+        requestAnimationFrame(updateNavOnScroll);
+        ticking = true;
+    }
+}
+
+window.addEventListener('scroll', requestScrollUpdate);

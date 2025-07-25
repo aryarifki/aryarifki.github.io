@@ -141,7 +141,8 @@ h1, h2, h3 {
     flex-direction: column;
 }
 
-.side-nav.active {
+.side-nav.active,
+.side-nav.scroll-visible {
     right: 0;
 }
 
@@ -150,11 +151,22 @@ h1, h2, h3 {
     margin-bottom: 40px;
 }
 
+.nav-header .logo-animation {
+    position: static;
+    transform: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 10px auto;
+    display: block;
+}
+
 .nav-logo {
     width: 60px;
     height: 60px;
     border-radius: 50%;
     margin-bottom: 10px;
+}
 
 .nav-links {
     list-style: none;
