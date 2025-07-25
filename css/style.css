@@ -172,3 +172,34 @@ footer{
     z-index:1100;
   }
 }
+/* ----------  CONTACT ICONS  ---------- */
+.contact-wrapper{
+  display:flex;
+  flex-wrap:wrap;
+  gap:1.5rem;
+  margin-top:1rem;
+}
+.contact-item{
+  flex:1 1 220px;
+  display:flex;
+  align-items:center;
+  gap:.8rem;
+  padding:1rem 1.4rem;
+  border-radius:12px;
+  background:linear-gradient(135deg,var(--white) 0%,var(--light) 100%);
+  box-shadow:0 4px 12px rgba(0,66,37,.08);
+  color:#111;
+  transition:var(--transition);
+}
+.contact-item:hover{
+  transform:translateY(-4px);
+  box-shadow:0 8px 20px rgba(0,255,136,.22);
+  color:var(--am-green);
+}
+.contact-item i{
+  font-size:1.6rem;
+  color:var(--am-green);
+}
+@media(max-width:480px){
+  .contact-item{flex:1 1 100%;justify-content:center;}
+}
