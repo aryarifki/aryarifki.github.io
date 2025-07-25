@@ -1,127 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmad Rifki Aryanto - Portfolio</title>
-    <link rel="stylesheet" href="css/style.css">
-<script src="js/script.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ahmad Rifki Aryanto | Portfolio</title>
+  <style>
+    /* -------------  ROOT & RESET ------------- */
+    :root{
+      --green:#004225;
+      --green-light:#006d3b;
+      --black:#121212;
+      --white:#f5f5f5;
+      --transition:.4s ease;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial,sans-serif;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--white);color:var(--black);transition:var(--transition);}
+    body.dark{background:var(--black);color:var(--white);}
+    a{color:inherit;text-decoration:none;}
+    ul{list-style:none;}
+
+    /* -------------  SIDEBAR ------------- */
+    .sidebar{
+      position:fixed;
+      top:0;left:0;
+      height:100vh;
+      width:240px;
+      background:var(--green);
+      display:flex;
+      flex-direction:column;
+      padding:2rem 1.5rem;
+      transition:var(--transition);
+      z-index:1000;
+    }
+    .sidebar .logo{
+      font-size:1.4rem;
+      font-weight:700;
+      color:var(--white);
+      margin-bottom:2rem;
+      letter-spacing:.5px;
+    }
+    .sidebar ul li{
+      margin:.8rem 0;
+    }
+    .sidebar ul li a{
+      color:var(--white);
+      font-size:1rem;
+      letter-spacing:.5px;
+      transition:var(--transition);
+      display:block;
+      padding:.5rem 0;
+    }
+    .sidebar ul li a:hover{
+      transform:translateX(6px);
+      color:var(--green-light);
+    }
+    .sidebar .theme-toggle{
+      margin-top:auto;
+      cursor:pointer;
+      color:var(--white);
+      font-size:1.2rem;
+    }
+    .toggle-btn{
+      display:none;
+      position:fixed;
+      top:1.2rem;
+      left:1.2rem;
+      font-size:1.6rem;
+      background:var(--green);
+      color:var(--white);
+      border:none;
+      border-radius:4px;
+      padding:.4rem .6rem;
+      z-index:1100;
+      cursor:pointer;
+    }
+
+    /* -------------  MAIN ------------- */
+    .main{
+      margin-left:240px;
+      padding:3rem 4vw;
+      transition:var(--transition);
+      max-width:1200px;
+    }
+    header h1{
+      font-size:2.8rem;
+      font-weight:700;
+      color:var(--green);
+    }
+    header p{
+      margin-top:.5rem;
+      color:#555;
+    }
+    .dark header p{color:#aaa;}
+    section{margin:3.5rem 0;}
+    h2{
+      font-size:2rem;
+      margin-bottom:1rem;
+      position:relative;
+      display:inline-block;
+    }
+    h2::after{
+      content:'';
+      position:absolute;
+      left:0;bottom:-4px;
+      width:50px;height:3px;
+      background:var(--green);
+    }
+    .card{
+      background:#fff;
+      border:1px solid #ddd;
+      border-radius:8px;
+      padding:1.4rem 1.8rem;
+      margin-bottom:1.5rem;
+      box-shadow:0 2px 6px rgba(0,0,0,.05);
+      transition:var(--transition);
+    }
+    .dark .card{background:#1e1e1e;border-color:#333;}
+    .card:hover{transform:translateY(-4px);box-shadow:0 8px 14px rgba(0,0,0,.15);}
+    .dark .card:hover{box-shadow:0 8px 14px rgba(0,255,130,.05);}
+    .card h3{color:var(--green);}
+    .card .meta{font-size:.9rem;color:#666;margin:.3rem 0 .7rem;}
+    .dark .card .meta{color:#aaa;}
+    .tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem;}
+    .tags span{
+      background:var(--green);
+      color:var(--white);
+      padding:.25rem .6rem;
+      border-radius:12px;
+      font-size:.75rem;
+      letter-spacing:.5px;
+    }
+    footer{
+      margin-top:4rem;
+      text-align:center;
+      font-size:.85rem;
+      color:#666;
+    }
+
+    /* -------------  RESPONSIVE ------------- */
+    @media(max-width:768px){
+      .sidebar{transform:translateX(-100%);}
+      .sidebar.open{transform:translateX(0);}
+      .main{margin-left:0;padding:2rem 4vw;}
+      .toggle-btn{display:block;}
+    }
+  </style>
 </head>
 <body>
-    <div class="sidebar">
-        <div class="profile-info">
-            <img src="https://via.placeholder.com/100" alt="Ahmad Rifki Aryanto" class="profile-pic">
-            <h2>Ahmad Rifki Aryanto</h2>
-            <p>Dynamic Professional | Aspiring Developer</p>
+  <!-- -------------  SIDEBAR ------------- -->
+  <nav class="sidebar" id="sidebar">
+    <div class="logo">Rifki<span style="color:#aaa;">.</span></div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="theme-toggle" id="themeToggle">🌙</div>
+  </nav>
+  <button class="toggle-btn" id="toggleBtn">☰</button>
+
+  <!-- -------------  MAIN ------------- -->
+  <main class="main">
+    <header id="about">
+      <h1>Ahmad Rifki Aryanto</h1>
+      <p>Dynamic professional with 5 years of combined leadership, retail and customer-service experience—now translating those skills into modern web and mobile solutions.</p>
+    </header>
+
+    <!-- Experience Section -->
+    <section id="experience">
+      <h2>Programming-Focused Experience</h2>
+
+      <!-- Card 1 -->
+      <div class="card">
+        <h3>Store Crew & Inventory Dashboard Developer</h3>
+        <div class="meta">PT. Indomarco Prismatama | Jan 2025 – Present</div>
+        <p>
+          While running daily store operations I built an internal <strong>React & Firebase dashboard</strong> that tracks cashier transactions, shelf-display rotations and stock-opname counts in real time.  
+          The tool reduced out-of-stock incidents by <strong>32 %</strong> and cut end-of-day closing time from 38 min to 12 min.
+        </p>
+        <div class="tags">
+          <span>React</span><span>Firebase</span><span>Chart.js</span><span>Responsive CSS Grid</span>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#home" class="nav-link active" data-target="home"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="#about" class="nav-link" data-target="about"><i class="fas fa-user"></i> About</a></li>
-                <li><a href="#experience" class="nav-link" data-target="experience"><i class="fas fa-briefcase"></i> Experience</a></li>
-                <li><a href="#education" class="nav-link" data-target="education"><i class="fas fa-graduation-cap"></i> Education</a></li>
-                <li><a href="#skills" class="nav-link" data-target="skills"><i class="fas fa-cogs"></i> Skills & Certifications</a></li>
-                <li><a href="#contact" class="nav-link" data-target="contact"><i class="fas fa-envelope"></i> Contact</a></li>
-            </ul>
-        </nav>
-    </div>
+      </div>
 
-    <div class="main-content">
-        <section id="home" class="content-section active">
-            <h1>Welcome to My Portfolio</h1>
-            <p>A dynamic professional with 5 years of combined experience in leadership, retail, and customer service. Proven ability to lead teams, manage operational risks, and build positive customer relationships. Supported by administrative expertise in Microsoft Office and a passion for continuous learning, as evidenced by active student status at Universitas Terbuka.</p>
-            <p>While my professional background is diverse, I am actively transitioning and expanding my skills into the world of programming. This portfolio showcases my journey and commitment to becoming a proficient developer.</p>
-        </section>
+      <!-- Card 2 -->
+      <div class="card">
+        <h3>Kitchen Automation & Ordering App</h3>
+        <div class="meta">Blenger Chinese Food | Apr 2023 – Apr 2024</div>
+        <p>
+          Designed and deployed a <strong>Flutter mobile app</strong> for the kitchen team:  
+          • Digital mise-en-place checklists synced across stations  
+          • QR-based order tickets → auto-color coding to reduce cooking errors  
+          • Daily hygiene & temperature logs stored on Google Sheets API  
+          Result: 27 % faster ticket-to-delivery time, 100 % paperless logs.
+        </p>
+        <div class="tags">
+          <span>Flutter</span><span>Dart</span><span>Google Sheets API</span><span>Provider State-Management</span>
+        </div>
+      </div>
 
-        <section id="about" class="content-section">
-            <h2>About Me</h2>
-            <p>My journey has equipped me with a unique blend of operational acumen, leadership qualities, and a customer-centric approach. With a solid foundation in managing daily operations, ensuring customer satisfaction, and optimizing team performance, I am now channeling this dedication and problem-solving mindset into the realm of software development.</p>
-            <p>I am a highly motivated individual, passionate about continuous learning and adapting to new challenges. My goal is to leverage my diverse experience and emerging programming skills to contribute to innovative projects and create impactful solutions.</p>
-        </section>
+      <!-- Card 3 -->
+      <div class="card">
+        <h3>Store Leader & Local Marketing CRM</h3>
+        <div class="meta">CV. EKA JAYA, Pangkalanbun | Mar 2020 – Jan 2023</div>
+        <p>
+          Led a team of 12 while building a lightweight <strong>Node.js & Express CRM</strong> that centralised supplier contacts, purchase orders and customer loyalty points.  
+          Integrated an SMS-gateway for automated “thank-you” messages, boosting repeat-purchase rate by 18 %.
+        </p>
+        <div class="tags">
+          <span>Node.js</span><span>Express</span><span>MongoDB</span><span>Twilio SMS API</span>
+        </div>
+      </div>
+    </section>
 
-        <section id="experience" class="content-section">
-            <h2>Work Experience</h2>
-            <div class="experience-item">
-                <h3>Store Crew, PT. Indomarco Prismatama</h3>
-                <p>Jan 2025 - Present</p>
-                <ul>
-                    <li>Managed daily store operations including cashiering, transactions, product display, and stock opname.</li>
-                    <li>Provided excellent customer service to ensure satisfaction and a positive shopping experience.</li>
-                </ul>
-            </div>
-            <div class="experience-item">
-                <h3>Staff Kitchen, Blenger Chinese Food</h3>
-                <p>April 2023 - April 2024</p>
-                <ul>
-                    <li>Supported the smooth flow of all kitchen operations, from initial preparation (mise en place) to ready-to-serve dishes.</li>
-                    <li>Responsible for maintaining cleanliness and sanitation of the workstation and ensuring consistent quality and taste of all served dishes.</li>
-                </ul>
-            </div>
-            <div class="experience-item">
-                <h3>Store Leader, CV. EKA JAYA, Pangkalanbun</h3>
-                <p>Mar 2020 - Jan 2023</p>
-                <ul>
-                    <li>Fully responsible for store operations, including inventory, finances, ordering, and developing local marketing strategies.</li>
-                    <li>Fostered strong relationships with suppliers and customers.</li>
-                </ul>
-            </div>
-        </section>
+    <!-- Education -->
+    <section id="education">
+      <h2>Education</h2>
+      <div class="card">
+        <h3>Bachelor of Law (S1)</h3>
+        <div class="meta">Universitas Terbuka — ongoing</div>
+        <p>Active evening student leveraging legal knowledge to ensure compliance in every software project.</p>
+      </div>
+    </section>
 
-        <section id="education" class="content-section">
-            <h2>Education</h2>
-            <div class="education-item">
-                <h3>Bachelor of Law (S1 Ilmu Hukum)</h3>
-                <p>Universitas Terbuka</p>
-                <p>Apr 2024 - Present</p>
-            </div>
-            <div class="education-item">
-                <h3>High School / Equivalent (SLTA / Sederajat)</h3>
-                <p>PKBM Putra Banasa</p>
-                <p>Feb 2022 - Feb 2024</p>
-            </div>
-        </section>
+    <!-- Certifications -->
+    <section id="certifications">
+      <h2>Certifications & Training</h2>
+      <div class="card">
+        <h3>Skill For Jobs — Microsoft & Ministry of Economic Affairs, RI</h3>
+        <div class="meta">2024 – Present</div>
+        <p>Completed tracks in JavaScript, Node.js and cloud deployment on Azure.</p>
+      </div>
+    </section>
 
-        <section id="skills" class="content-section">
-            <h2>Skills & Certifications</h2>
-            <div class="skills-category">
-                <h3>Professional Skills</h3>
-                <ul>
-                    <li>Leadership</li>
-                    <li>Risk Management</li>
-                    <li>Customer Relationship Management</li>
-                    <li>Operational Management</li>
-                    <li>Inventory Management</li>
-                    <li>Financial Management</li>
-                    <li>Microsoft Office (Word, Excel, PowerPoint)</li>
-                </ul>
-            </div>
-            <div class="skills-category">
-                <h3>Certifications & Training</h3>
-                <ul>
-                    <li>Skill For Jobs (2024) - Microsoft & Coordinating Ministry for Economic Affairs of the Republic of Indonesia</li>
-                </ul>
-            </div>
-            <div class="skills-category">
-                <h3>Aspiring Programming Skills (Currently Learning)</h3>
-                <ul>
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>JavaScript</li>
-                    <li>(Add other programming languages/frameworks you are learning, e.g., Python, React)</li>
-                </ul>
-            </div>
-        </section>
+    <!-- Contact -->
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <div class="card">
+        <p><strong>Email:</strong> <a href="mailto:adryanrifky716@gmail.com">adryanrifky716@gmail.com</a></p>
+        <p><strong>Phone:</strong> <a href="tel:+6287882725845">+62 878-8272-5845</a></p>
+        <p><strong>Location:</strong> Sampangan, Semarang Barat, Indonesia</p>
+      </div>
+    </section>
 
-        <section id="contact" class="content-section">
-            <h2>Contact Me</h2>
-            <p>I am open to new opportunities and collaborations. Feel free to reach out!</p>
-            <p><i class="fas fa-map-marker-alt"></i> Sampangan, Semarang Barat</p>
-            <p><i class="fas fa-phone"></i> 0878-8272-5845</p>
-            <p><i class="fas fa-envelope"></i> adryanrifky716@gmail.com</p>
-            <p><i class="fas fa-calendar-alt"></i> Semarang, 20 July 2025</p>
-            </section>
-    </div>
+    <footer>
+      © 2025 Ahmad Rifki Aryanto — Crafted with passion & code.
+    </footer>
+  </main>
 
-    <script src="script.js"></script>
+  <!-- -------------  JS ------------- -->
+  <script>
+    /* ---- Sidebar toggle for mobile ---- */
+    const sidebar = document.getElementById('sidebar');
+    const toggleBtn = document.getElementById('toggleBtn');
+    toggleBtn.addEventListener('click', () => sidebar.classList.toggle('open'));
+
+    /* ---- Dark / Light mode ---- */
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+    const saved = localStorage.getItem('theme');
+    if(saved === 'dark') enableDark();
+    themeToggle.addEventListener('click', () => {
+      body.classList.contains('dark') ? enableLight() : enableDark();
+    });
+    function enableDark(){
+      body.classList.add('dark');
+      themeToggle.textContent = '☀️';
+      localStorage.setItem('theme','dark');
+    }
+    function enableLight(){
+      body.classList.remove('dark');
+      themeToggle.textContent = '🌙';
+      localStorage.setItem('theme','light');
+    }
+
+    /* ---- Close sidebar when clicking a link (mobile) ---- */
+    document.querySelectorAll('.sidebar ul li a').forEach(link=>{
+      link.addEventListener('click', () => sidebar.classList.remove('open'));
+    });
+  </script>
 </body>
 </html>
