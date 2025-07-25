@@ -80,6 +80,23 @@ document.querySelectorAll('.skill-tag').forEach((tag, index) => {
     tag.classList.add('fade-in');
 });
 
+// Intersection observer for skill tags
+const skillTagObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+});
+
+// Observe all skill tags
+document.querySelectorAll('.skill-tag').forEach(tag => {
+    skillTagObserver.observe(tag);
+});
+
 // Timeline animation
 document.querySelectorAll('.timeline-item').forEach((item, index) => {
     item.style.animationDelay = `${index * 0.2}s`;
